@@ -1,14 +1,24 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="header">
+      <img
+        class="logo"
+        src="https://freshair.nyc3.cdn.digitaloceanspaces.com/resources/white-simple.png"
+      />
+      <h1 class="name" v-if="$root.$data.user.name">
+        {{ $root.$data.user.name }}
+      </h1>
     </div>
     <router-view />
   </div>
 </template>
 
 <style lang="less">
+body,
+html {
+  margin: 0px;
+  background: #ff9421;
+}
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -25,5 +35,22 @@
       color: #42b983;
     }
   }
+}
+.name {
+  position: fixed;
+  margin: 10px;
+  right: 10px;
+  top: 10px;
+  color: white;
+  font-size: 24px;
+  line-height: 36px;
+}
+.logo {
+  height: 56px;
+  margin: 10px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  object-fit: cover;
 }
 </style>

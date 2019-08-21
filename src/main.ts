@@ -7,7 +7,13 @@ import "./registerServiceWorker";
 Vue.config.productionTip = false;
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+	router,
+	store,
+	data() {
+		return {
+			user: {},
+			auth: ""
+		};
+	},
+	render: h => h(App)
 }).$mount("#app");
