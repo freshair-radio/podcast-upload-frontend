@@ -21,9 +21,10 @@
         />
       </div>
       <div v-if="state == POST">
+        <audio :src="api_response" controls></audio>
         <p>Embed this snippet in your post</p>
 
-        <pre><code>{{api_response}}</code></pre>
+        <pre><code>{{snippet}}</code></pre>
       </div>
     </div>
   </div>
@@ -53,9 +54,7 @@ export default Vue.extend({
     handle_upload: async function(e) {
       let file = e.target.files[0];
       this.state = UPLOADING;
-      const cf = await fetch("https://audio.freshair.workers.dev").then(r =>
-        r.json()
-      );
+      const cf = await fetch("https://audio.freshair.dev").then(r => r.json());
 
       let data = new Blob([file], { type: "application/octet-stream" });
       console.log(file.type);
@@ -77,8 +76,8 @@ export default Vue.extend({
     }
   },
   computed: {
-    arts() {
-      return this.articles.map(a => JSON.parse(a));
+    snippet() {
+      return `<audio src="${this.api_response}" controls></audio>`;
     }
   }
 });
@@ -191,6 +190,13 @@ h2 {
   height: 90px;
   width: 90px;
   border-radius: 10px;
+}
+pre {
+  background: #212121;
+  padding: 8px;
+  border-radius: 8px;
+  color: white;
+  overflow: auto;
 }
 </style>
 <style>
