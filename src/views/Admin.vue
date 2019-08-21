@@ -51,7 +51,7 @@ export default Vue.extend({
   },
 
   methods: {
-    handle_upload: async function(e) {
+    handle_upload: async function(e: any) {
       let file = e.target.files[0];
       this.state = UPLOADING;
       const cf = await fetch("https://audio.freshair.dev").then(r => r.json());
@@ -77,6 +77,7 @@ export default Vue.extend({
   },
   computed: {
     snippet() {
+      // @ts-ignore
       return `<audio src="${this.api_response}" controls></audio>`;
     }
   }
