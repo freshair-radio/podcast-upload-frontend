@@ -5,9 +5,6 @@
         class="logo"
         src="https://freshair.nyc3.cdn.digitaloceanspaces.com/resources/white-simple.png"
       />
-      <h1 class="name" v-if="$root.$data.user.name">
-        {{ $root.$data.user.name }}
-      </h1>
     </div>
     <router-view />
   </div>
